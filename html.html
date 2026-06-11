@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikita Minecraft server</title>
     <style>
-        /* 核心暗黑風格 */
         body {
             font-family: 'Courier New', Courier, monospace;
             line-height: 1.6;
@@ -14,8 +13,6 @@
             background-color: #0a0a0a;
             color: #d1d5db;
         }
-        
-        /* 頂部導覽列與漢堡選單 */
         nav {
             background-color: #111;
             padding: 15px 20px;
@@ -33,7 +30,6 @@
             font-size: 1.2rem;
             text-decoration: none;
         }
-        /* 漢堡按鈕 ≡ */
         .menu-btn {
             background: none;
             border: none;
@@ -43,7 +39,6 @@
             padding: 0 10px;
             line-height: 1;
         }
-        /* 側邊抽屜選單 */
         .side-menu {
             position: fixed;
             top: 0;
@@ -58,9 +53,7 @@
             box-sizing: border-box;
             border-left: 2px solid #ef4444;
         }
-        .side-menu.open {
-            right: 0;
-        }
+        .side-menu.open { right: 0; }
         .close-btn {
             background: none;
             border: none;
@@ -82,10 +75,7 @@
             margin-bottom: 25px;
             transition: color 0.3s;
         }
-        .menu-links a:hover {
-            color: #ef4444;
-        }
-        /* 語言選擇器 */
+        .menu-links a:hover { color: #ef4444; }
         .lang-selector {
             background-color: #222;
             color: #fff;
@@ -96,8 +86,6 @@
             width: 100%;
             margin-top: 20px;
         }
-
-        /* 網頁大型看板 */
         header {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(10, 10, 10, 1)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200') no-repeat center center/cover;
             color: #fff;
@@ -117,9 +105,7 @@
             color: #9ca3af;
             font-style: italic;
         }
-        .server-status {
-            margin-top: 25px;
-        }
+        .server-status { margin-top: 25px; }
         .server-ip {
             display: inline-block;
             background-color: #111827;
@@ -137,8 +123,6 @@
             color: #9ca3af;
             font-size: 1rem;
         }
-
-        /* 內容區塊 */
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -160,41 +144,64 @@
             height: 100%;
             background-color: #991b1b;
         }
-        h2 {
+        h2 { color: #ef4444; margin-top: 0; font-size: 1.8rem; }
+        
+        /* 特點列表樣式 */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .features-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .features-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 5px;
             color: #ef4444;
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
-        .info-list {
-            padding-left: 20px;
-        }
-        .info-list li {
-            margin-bottom: 12px;
-        }
-        .warning-highlight {
-            color: #f87171;
             font-weight: bold;
         }
-        .thanks-box {
-            background-color: rgba(239, 68, 68, 0.05);
-            border: 1px solid #333;
-            padding: 15px;
-            margin-top: 20px;
-            font-size: 0.95rem;
-            border-radius: 4px;
-        }
+
         .btn {
             display: inline-block;
-            background-color: #991b1b;
+            background-color: #5865F2;
             color: white;
             padding: 12px 24px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: background 0.3s, box-shadow 0.3s;
             margin-top: 15px;
+            border-radius: 4px;
         }
         .btn:hover {
-            background-color: #b91c1c;
+            background-color: #4752C4;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+        }
+        .btn-secondary {
+            background-color: #222;
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #ef4444;
+            color: white;
+        }
+        .discord-link-text {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #6b7280;
         }
         footer {
             text-align: center;
@@ -216,12 +223,13 @@
     <div class="side-menu" id="sideMenu">
         <button class="close-btn" onclick="toggleMenu()">✕</button>
         <div class="menu-links">
-            <a href="#about" id="nav-about" onclick="toggleMenu()">伺服器核心</a>
-            <a href="#details" id="nav-details" onclick="toggleMenu()">詳細說明說明</a>
+            <a href="#about" id="nav-about" onclick="toggleMenu()">伺服器特點</a>
+            <a href="info.html" id="nav-details">詳細說明</a>
             <a href="#join" id="nav-join" onclick="toggleMenu()">立即連線</a>
             
             <select class="lang-selector" onchange="changeLanguage(this.value)">
                 <option value="zh-TW">繁體中文</option>
+                <option value="zh-CN">简体中文</option>
                 <option value="en">English</option>
                 <option value="ja">日本語</option>
             </select>
@@ -231,7 +239,6 @@
     <header>
         <h1>Nikita Minecraft server</h1>
         <p id="hero-subtitle">— 歡迎來到真正的無政府世界 —</p>
-        
         <div class="server-status">
             <div class="server-ip">IP: www.nikitaminecraft.zone</div>
             <span class="status-badge" id="server-badge">版本: 26.1.2 | 人數上限: 20人</span>
@@ -239,28 +246,15 @@
     </header>
 
     <div class="container">
-        
         <div id="about" class="card">
-            <h2 id="about-title">💀 關於 Nikita Server</h2>
-            <p id="about-p1">這是一個<strong>完全沒有規則、沒有地圖重置、沒有管理員介入</strong>的純粹 Minecraft 伺服器。</p>
-            <p id="about-p2">在這裡，實力代表一切。不論你是想成為孤傲的生存專家、建造隱密基地、還是成為洗劫一切的掠奪者，這裡都能滿足你對自由的渴望。地圖的命運完全由玩家掌握。</p>
-        </div>
-
-        <div id="details" class="card">
-            <h2 id="details-title">📋 伺服器詳細說明</h2>
-            <ul class="info-list" id="details-list">
-                <li><strong>自由與團隊：</strong> 伺服器基本上沒有限制，允許玩家自由組建團體。</li>
-                <li><strong>輔助與外掛規範：</strong> 可以開啟輔助功能。但請注意，<span class="warning-highlight">嚴禁使用惡性 BUG 和非法外掛（例如：刷物品、秒殺、鎖血等）</span>，違者一律予以封鎖處分。</li>
-                <li><strong>民主投票機制：</strong> 伺服器可以透過投票來改變規則。</li>
-                <li><strong>管理員選拔：</strong> 管理員由社區玩家投票選出。名額基準為每 50 人即享有 1 個管理員名額，上限為 5 位。同時，管理員亦可經由投票彈劾革職。</li>
-                <li><strong>人數上限調整：</strong> 目前基本人數上限為 20 人。若伺服器註冊人數超過 25 人，將會視伺服器性能表現逐步調高人數上限。</li>
-                <li><strong>定期維護時間：</strong> 每個星期六上午 9:00 可能會進行一次不超過 20 分鐘的例行維護。若有重大更新，將提早於伺服器內發布公告。</li>
-                <li><strong>語音語音模組：</strong> 伺服器已加入 <code>Simple Voice Chat</code> 近距離語音插件。</li>
+            <h2 id="about-title">💀 伺服器特點</h2>
+            <ul class="features-list" id="features-content">
+                <li><strong>絕無規則：</strong> 純粹的無政府冒險，沒有多餘的人為限制。</li>
+                <li><strong>地圖永不重置：</strong> 玩家的所有建造與破壞都將永久保留。</li>
+                <li><strong>高自由度體驗：</strong> 無論是生存、建築、組隊還是掠奪，完全由玩家自主。</li>
+                <li><strong>社區民主自治：</strong> 遊戲規則與管理權限皆由社區玩家投票決定。</li>
             </ul>
-            <div class="thanks-box" id="thanks-text">
-                ⚙️ 本伺服器加入了開源伺服器管理軟體 <strong>opanel</strong>，在此感謝 opanel 全體專案組的辛勤付出。<br><br>
-                👁️ <strong>舉報機制：</strong> 如在遊戲內發現任何可疑人員，請積極向管理員檢舉。
-            </div>
+            <a href="info.html" class="btn-secondary" id="read-more-btn">閱讀詳細伺服器說明 »</a>
         </div>
 
         <div id="join" class="card">
@@ -270,9 +264,9 @@
             <p id="join-p3">3. 輸入位置：<code>www.nikitaminecraft.zone</code></p>
             <p id="join-p4">4. 擠進 20 人的生存槽位，開啟你的無政府冒險。</p>
             
-            <a href="#" class="btn" id="discord-btn">加入玩家交流 Discord (社群)</a>
+            <a href="https://discord.gg/2K8PbrGpM" target="_blank" class="btn" id="discord-btn">加入玩家交流 Discord (社群)</a>
+            <span class="discord-link-text">無法跳轉？複製此連結：https://discord.gg/2K8PbrGpM</span>
         </div>
-
     </div>
 
     <footer>
@@ -280,96 +274,70 @@
     </footer>
 
     <script>
-        // 漢堡選單開關邏輯
         function toggleMenu() {
-            const menu = document.getElementById('sideMenu');
-            menu.classList.toggle('open');
+            document.getElementById('sideMenu').classList.toggle('open');
         }
 
-        // 多語言翻譯資料庫
         const translations = {
             "zh-TW": {
-                "nav-about": "伺服器核心",
-                "nav-details": "詳細說明",
-                "nav-join": "立即連線",
-                "hero-subtitle": "— 歡迎來到真正的無政府世界 —",
-                "server-badge": "版本: 26.1.2 | 人數上限: 20人",
-                "about-title": "💀 關於 Nikita Server",
-                "about-p1": "這是一個<strong>完全沒有規則、沒有地圖重置、沒有管理員介入</strong>的純粹 Minecraft 伺服器。",
-                "about-p2": "在這裡，實力代表一切。不論你是想成為孤傲的生存專家、建造隱密基地、還是成為洗劫一切的掠奪者，這裡都能滿足你對自由的渴望。地圖的命運完全由玩家掌握。",
-                "details-title": "📋 伺服器詳細說明",
-                "details-list": `
-                    <li><strong>自由與團隊：</strong> 伺服器基本上沒有限制，允許玩家自由組建團體。</li>
-                    <li><strong>輔助與外掛規範：</strong> 可以開啟輔助功能。但請注意，<span class="warning-highlight">嚴禁使用惡性 BUG 和非法外掛（例如：刷物品、秒殺、鎖血等）</span>，違者一律予以封鎖處分。</li>
-                    <li><strong>民主投票機制：</strong> 伺服器可以透過投票來改變規則。</li>
-                    <li><strong>管理員選拔：</strong> 管理員由社區玩家投票選出。名額基準為每 50 人即享有 1 個管理員名額，上限為 5 位。同時，管理員亦可經由投票彈劾革職。</li>
-                    <li><strong>人數上限調整：</strong> 目前基本人數上限為 20 人。若伺服器註冊人數超過 25 人，將會視伺服器性能表現逐步調高人數上限。</li>
-                    <li><strong>定期維護時間：</strong> 每個星期六上午 9:00 可能會進行一次不超過 20 分鐘的例行維護。若有重大更新，將提早於伺服器內發布公告。</li>
-                    <li><strong>語音語音模組：</strong> 伺服器已加入 <code>Simple Voice Chat</code> 近距離語音插件。</li>
+                "nav-about": "伺服器特點", "nav-details": "詳細說明", "nav-join": "立即連線",
+                "hero-subtitle": "— 歡迎來到真正的無政府世界 —", "server-badge": "版本: 26.1.2 | 人數上限: 20人",
+                "about-title": "💀 伺服器特點", "read-more-btn": "閱讀詳細伺服器說明 »",
+                "features-content": `
+                    <li><strong>絕無規則：</strong> 純粹的無政府冒險，沒有多餘的人為限制。</li>
+                    <li><strong>地圖永不重置：</strong> 玩家的所有建造與破壞都將永久保留。</li>
+                    <li><strong>高自由度體驗：</strong> 無論是生存、建築、組隊還是掠奪，完全由玩家自主。</li>
+                    <li><strong>社區民主自治：</strong> 遊戲規則與管理權限皆由社區玩家投票決定。</li>
                 `,
-                "thanks-text": "⚙️ 本伺服器加入了開源伺服器管理軟體 <strong>opanel</strong>，在此感謝 opanel 全體專案組的辛勤付出。<br><br>👁️ <strong>舉報機制：</strong> 如在遊戲內發現任何可疑人員，請積極向管理員檢舉。",
-                "join-title": "🔌 進入伺服器",
-                "join-p1": "1. 啟動你的 Minecraft，並確認版本為 <code>26.1.2</code>。",
-                "join-p2": "2. 進入多人遊戲，點擊「直接連線」或「新增伺服器」。",
-                "join-p3": "3. 輸入位置：<code>www.nikitaminecraft.zone</code>",
-                "join-p4": "4. 擠進 20 人的生存槽位，開啟你的無政府冒險。",
-                "discord-btn": "加入玩家交流 Discord (社群)",
+                "join-title": "🔌 進入伺服器", "join-p1": "1. 啟動你的 Minecraft，並確認版本為 <code>26.1.2</code>。",
+                "join-p2": "2. 進入多人遊戲，點擊「直接連線」或「新增伺服器」。", "join-p3": "3. 輸入位置：<code>www.nikitaminecraft.zone</code>",
+                "join-p4": "4. 擠進 20 人的生存槽位，開啟你的無政府冒險。", "discord-btn": "加入玩家交流 Discord (社群)",
                 "footer-text": "© 2026 Nikita Minecraft server. 本網站與 Mojang / Microsoft 官方無關."
             },
-            "en": {
-                "nav-about": "Core Features",
-                "nav-details": "Detailed Info",
-                "nav-join": "Join Now",
-                "hero-subtitle": "- Welcome to the true Anarchy World -",
-                "server-badge": "Version: 26.1.2 | Slots: 20",
-                "about-title": "💀 About Nikita Server",
-                "about-p1": "This is a pure Minecraft server with <strong>absolutely no rules, no map resets, and no admin interference</strong>.",
-                "about-p2": "Here, strength is everything. Whether you want to be a lone survival expert, build a hidden base, or become a raider, this place satisfies your desire for freedom.",
-                "details-title": "📋 Server Specifications & Info",
-                "details-list": `
-                    <li><strong>Freedom & Groups:</strong> Basically no restrictions, players are free to form groups and clans.</li>
-                    <li><strong>Hacks & Client Policy:</strong> Utility mods/clients are allowed. However, <span class="warning-highlight">exploiting game-breaking/game-malicious BUGs and hacks (e.g., item dupe, insta-kill, god mode/health lock) is strictly prohibited</span> and will result in a ban.</li>
-                    <li><strong>Democratic Voting:</strong> Server rules can be altered through community voting.</li>
-                    <li><strong>Admin Selection:</strong> Admins are democratically elected by the community. 1 admin slot per 50 registered players, capped at 5 admins maximum. Admins can also be impeached via vote.</li>
-                    <li><strong>Player Limit adjustment:</strong> Currently capped at 20 slots. If registered players exceed 25, the slots will be scaled up based on hardware performance.</li>
-                    <li><strong>Maintenance:</strong> Routine maintenance may occur every Saturday at 9:00 AM, lasting no longer than 20 mins. Major updates will be announced in-game.</li>
-                    <li><strong>Voice Mod:</strong> The server features the <code>Simple Voice Chat</code> proximity mod.</li>
+            "zh-CN": {
+                "nav-about": "服务器特点", "nav-details": "详细说明", "nav-join": "立即连线",
+                "hero-subtitle": "— 欢迎来到真正的无政府世界 —", "server-badge": "版本: 26.1.2 | 人数上限: 20人",
+                "about-title": "💀 服务器特点", "read-more-btn": "阅读详细服务器说明 »",
+                "features-content": `
+                    <li><strong>绝无规则：</strong> 纯粹的无政府冒险，没有多余的人为限制。</li>
+                    <li><strong>地图永不重置：</strong> 玩家的所有建造与破坏都将永久保留。</li>
+                    <li><strong>高自由度体验：</strong> 无论是生存、建筑、组队还是掠夺，完全由玩家自主。</li>
+                    <li><strong>社区民主自治：</strong> 游戏规则与管理权限皆由社区玩家投票决定。</li>
                 `,
-                "thanks-text": "⚙️ Powered by the open-source server management tool <strong>opanel</strong>. Special thanks to the entire opanel project team.<br><br>👁️ <strong>Report:</strong> If you spot suspicious malicious activity, report it directly to an admin.",
-                "join-title": "🔌 Connect to Server",
-                "join-p1": "1. Launch Minecraft and ensure your version is <code>26.1.2</code>.",
-                "join-p2": "2. Go to Multiplayer -> Direct Connect or Add Server.",
-                "join-p3": "3. Enter Server Address: <code>www.nikitaminecraft.zone</code>",
-                "join-p4": "4. Grab one of the 20 slots and start your adventure.",
-                "discord-btn": "Join Community Discord",
+                "join-title": "🔌 进入服务器", "join-p1": "1. 启动你的 Minecraft，并确认版本为 <code>26.1.2</code>。",
+                "join-p2": "2. 进入多人游戏，点击“直接连线”或“新增服务器”。", "join-p3": "3. 输入位置：<code>www.nikitaminecraft.zone</code>",
+                "join-p4": "4. 挤进 20 人的生存槽位，开启你的无政府冒险。", "discord-btn": "加入玩家交流 Discord (社区)",
+                "footer-text": "© 2026 Nikita Minecraft server. 本网站与 Mojang / Microsoft 官方无关."
+            },
+            "en": {
+                "nav-about": "Features", "nav-details": "Detailed Info", "nav-join": "Join Now",
+                "hero-subtitle": "- Welcome to the true Anarchy World -", "server-badge": "Version: 26.1.2 | Slots: 20",
+                "about-title": "💀 Server Features", "read-more-btn": "Read Detailed Specifications »",
+                "features-content": `
+                    <li><strong>No Rules:</strong> Pure anarchy adventure with zero human restrictions.</li>
+                    <li><strong>No Map Resets:</strong> All player creations and destructions are preserved forever.</li>
+                    <li><strong>High Freedom:</strong> Survival, building, teaming, or raiding—completely up to you.</li>
+                    <li><strong>Democratic Autonomy:</strong> Server rules and admin powers are decided by community voting.</li>
+                `,
+                "join-title": "🔌 Connect to Server", "join-p1": "1. Launch Minecraft and ensure your version is <code>26.1.2</code>.",
+                "join-p2": "2. Go to Multiplayer -> Direct Connect or Add Server.", "join-p3": "3. Enter Server Address: <code>www.nikitaminecraft.zone</code>",
+                "join-p4": "4. Grab one of the 20 slots and start your adventure.", "discord-btn": "Join Community Discord",
                 "footer-text": "© 2026 Nikita Minecraft server. This website is not affiliated with Mojang / Microsoft."
             },
             "ja": {
-                "nav-about": "サーバーについて",
-                "nav-details": "詳細説明",
-                "nav-join": "接続方法",
-                "hero-subtitle": "— 本物のアイデンティティ、アナーキーの世界へようこそ —",
-                "server-badge": "バージョン: 26.1.2 | 定員: 20人",
-                "about-title": "💀 Nikita サーバーについて",
-                "about-p1": "ここは、<strong>ルールなし、マップリセットなし、管理者介入なし</strong>の純粋な Minecraft アナーキーサーバーです。",
-                "about-p2": "ここでは力こそがすべてです。あなたの自由なサバイバルを極めてください。",
-                "details-title": "📋 サーバー詳細ガイドライン",
-                "details-list": `
-                    <li><strong>自由とチーム：</strong> 基本的に制限はなく、自由にクランやグループを結成できます。</li>
-                    <li><strong>MODとチート規定：</strong> 補助ツールの使用は許可されています。ただし、<span class="warning-highlight">悪質なバグ利用や不正ハック（例：アイテム増殖、即死、無敵/体力ロックなど）は厳禁</span>であり、即座にBAN対象となります。</li>
-                    <li><strong>投票システム：</strong> 投票を通じてサーバーのルールを変更できます。</li>
-                    <li><strong>管理者の選出：</strong> 管理者はコミュニティの投票で選ばれます。登録者50人につき1名、最大5名まで。不適格な管理者は投票で解任も可能です。</li>
-                    <li><strong>定員の調整：</strong> 現在の同時接続上限は20人です。登録者が25人を超えた場合、サーバー性能に応じて上限を引き上げます。</li>
-                    <li><strong>定期メンテナンス：</strong> 毎週土曜日の午前9:00から、20分以内の定期メンテを行う場合があります。大規模アプデはゲーム内で告知します。</li>
-                    <li><strong>ボイスチャット：</strong> サーバーには <code>Simple Voice Chat</code> 近接ボイチャMODが導入されています。</li>
+                "nav-about": "サーバー特徴", "nav-details": "詳細説明", "nav-join": "接続方法",
+                "hero-subtitle": "— 本物のアイデンティティ、アナーキーの世界へようこそ —", "server-badge": "バージョン: 26.1.2 | 定員: 20人",
+                "about-title": "💀 サーバーの特徴", "read-more-btn": "サーバー詳細説明を読む »",
+                "features-content": `
+                    <li><strong>ルール一切なし：</strong> 人為的な制限がまったくない、純粋なアナーキー。</li>
+                    <li><strong>マップリセットなし：</strong> プレイヤーの建築と破壊はすべて永久に保存されます。</li>
+                    <li><strong>圧倒的な自由度：</strong> サバイバル、建築、クラン結成、略奪など、すべては自由です。</li>
+                    <li><strong>民主的な自治：</strong> サーバーのルールや管理権限はコミュニティ投票で決定。</li>
                 `,
-                "thanks-text": "⚙️ 当サーバーはオープンソースの管理ソフト <strong>opanel</strong> を導入しています。opanel プロジェクトチームの皆様に深く感謝いたします。<br><br>👁️ <strong>通報：</strong> 不審な行為を見かけた場合は、管理者に報告してください。",
-                "join-title": "🔌 参加方法",
-                "join-p1": "1. Minecraft を起動し、バージョンが <code>26.1.2</code> であることを確認します。",
-                "join-p2": "2. マルチプレイから「ダイレクト接続」または「サーバーを追加」を選択。",
-                "join-p3": "3. アドレスを入力: <code>www.nikitaminecraft.zone</code>",
-                "join-p4": "4. 20人の枠に入り、アナーキーな冒険を始めましょう。",
-                "discord-btn": "公式 Discord に参加",
+                "join-title": "🔌 参加方法", "join-p1": "1. Minecraft を起動し、バージョンが <code>26.1.2</code> であることを確認します。",
+                "nav-home": "ホームに戻る",
+                "join-p2": "2. マルチプレイから「ダイレクト接続」または「サーバーを追加」を選択。", "join-p3": "3. アドレスを入力: <code>www.nikitaminecraft.zone</code>",
+                "join-p4": "4. 20人の枠に入り、アナーキーな冒険を始めましょう。", "discord-btn": "公式 Discord に参加",
                 "footer-text": "© 2026 Nikita Minecraft server. このサイトは Mojang / Microsoft とは関係ありません。"
             }
         };
@@ -377,12 +345,9 @@
         function changeLanguage(lang) {
             const data = translations[lang];
             if (!data) return;
-
             for (let id in data) {
                 const element = document.getElementById(id);
-                if (element) {
-                    element.innerHTML = data[id];
-                }
+                if (element) element.innerHTML = data[id];
             }
             document.documentElement.lang = lang;
         }
