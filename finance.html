@@ -24,7 +24,6 @@
         .finance-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; font-size: 0.95rem; }
         .finance-table th, .finance-table td { padding: 12px; border-bottom: 1px solid #222; }
         .finance-table th { color: #ef4444; background-color: rgba(255,255,255,0.02); }
-        .income { color: #22c55e; font-weight: bold; } 
         .expense { color: #ef4444; font-weight: bold; } 
         .pending { color: #eab308; font-weight: bold; }
         .balance-box { background: rgba(255,255,255,0.02); border: 1px solid #222; padding: 15px; border-radius: 6px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
@@ -49,7 +48,6 @@
         <div class="menu-links">
             <a href="index.html">返回首頁</a>
             <a href="links.html">友情連結</a>
-            <a href="team.html">運營團隊</a>
         </div>
     </div>
     <div class="container">
@@ -58,13 +56,7 @@
             <h2>📊 財務收支流水報表</h2>
             <p>本伺服器堅持不販售任何破壞遊戲平衡的虛擬道具，所有營運開銷與玩家支持的讚賞金皆在此透明公開。</p>
             <table class="finance-table">
-                <thead>
-                    <tr>
-                        <th>日期</th>
-                        <th>收支項目說明</th>
-                        <th>金額 (HKD)</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>日期</th><th>收支項目說明</th><th>金額 (HKD)</th></tr></thead>
                 <tbody>
                     <tr>
                         <td>2027-09-12</td>
@@ -81,25 +73,13 @@
                 <h3 style="color:#fff; margin:0;">💎 讚賞與支持</h3>
                 <p style="font-size:0.95rem; color:#9ca3af; margin:10px 0 0 0;">如果您認同伺服器的無政府民主自治模式，歡迎掃描下方二維碼提供支持, 他們會指向一個中國大陸的一個虛擬賬戶，隨後會被我轉至統一的銀行賬戶,使用貝寶支付時請備注:贊助</p>
                 <div class="qr-container">
-                    <div class="qr-block">
-                        <div class="qr-label">贊賞通道一</div>
-                        <div class="qrcode-box">
-                            <img src="qr.png" alt="Donate QR">
-                        </div>
-                    </div>
-                    <div class="qr-block">
-                        <div class="qr-label">贊賞通道二</div>
-                        <div class="qrcode-box">
-                            <img src="QR2.png" alt="Donate QR 2">
-                        </div>
-                    </div>
+                    <div class="qr-block"><div class="qr-label">贊賞通道一</div><div class="qrcode-box"><img src="qr.png" alt="Donate QR"></div></div>
+                    <div class="qr-block"><div class="qr-label">贊賞通道二</div><div class="qrcode-box"><img src="QR2.png" alt="Donate QR 2"></div></div>
                 </div>
             </div>
         </div>
     </div>
     <footer><p>&copy; 2026 Nikita Minecraft server. 本網站與 Mojang / Microsoft 官方無關.</p></footer>
-    <script>
-        function toggleMenu() { document.getElementById('sideMenu').classList.toggle('open'); }
-    </script>
+    <script>function toggleMenu() { document.getElementById('sideMenu').classList.toggle('open'); }</script>
 </body>
 </html>
